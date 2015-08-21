@@ -34,13 +34,6 @@ file { '/opt/git':
   owner   => 'git',
 }
 
-exec { ['puppet-control-xt', 'gitk', 'profiles', 'roles', 'websites']:
-  command => "git init --bare ${namevar}.git",
-  cwd     => '/opt/git/',
-  path    => '/usr/bin',
-  user    => 'git',
-  creates => "/opt/git/${namevar}.git',
-  require => Package['git'],
-}
+gitk::gitrepo {['puppet-control-xt', 'gitk', 'profiles', 'roles', 'websites']: }
 
 }
