@@ -11,7 +11,9 @@ Facter.add('gitversion') do
   has_weight 100
   setcode do
     gitver = Facter::Core::Execution.exec('puppet resource package git | grep version')
-	if gitver
+	if gitver.empty?
+		nil
+	else
 		gitver.match(/\d+\.\d+\.\d+/)[0]
 	end
   end
@@ -22,11 +24,12 @@ Facter.add('gitversion') do
   has_weight 50
   setcode do
     gitensure = Facter::Core::Execution.exec('puppet resource package git | grep ensure')
-	if gitensure
+	if gitensure.empty?
+		nil
+	else
 		gitver=gitensure.match(/\d+\.\d+\.\d+/)
 		gitver[0] if gitver
-	else 
-		nil
 	end
   end
 end
+
