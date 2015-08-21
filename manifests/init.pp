@@ -34,6 +34,4 @@ file { '/opt/git':
   owner   => 'git',
 }
 
-gitk::gitrepo {['puppet-control-xt', 'gitk', 'profiles', 'roles', 'websites']: }
-
 }
