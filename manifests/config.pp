@@ -1,4 +1,4 @@
-class gitk {
+class gitk::config {
 
 user { 'git':
   ensure           => 'present',
