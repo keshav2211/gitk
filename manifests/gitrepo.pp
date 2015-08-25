@@ -5,7 +5,7 @@ exec { "$title":
   cwd     => '/opt/git/',
   path    => '/usr/bin',
   user    => 'git',
-  creates => "/opt/git/${title}.git",
+  creates => "/etc/git/${title}.git",
   require => Package['git'],
 }
 
