@@ -24,5 +24,10 @@ file { '/home/git/.ssh/authorized_keys':
   source  => 'puppet:///modules/gitk/authorized_keys',
 }
 
+file { '/opt/git':
+  ensure  => 'directory',
+  group   => 'git',
+  owner   => 'git',
+}
 
 }
