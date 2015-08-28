@@ -1,4 +1,4 @@
-class gitk::config {
+class gitk::config ($repohome='/opt/git') {
 
 user { 'git':
   ensure           => 'present',
@@ -7,14 +7,14 @@ user { 'git':
   password_max_age => '99999',
   password_min_age => '0',
   shell            => '/bin/bash',
-}
+  }
 
 file { '/home/git/.ssh':
   ensure  => 'directory',
   group   => 'git',
   mode    => '0700',
   owner   => 'git',
-}
+  }
 
 file { '/home/git/.ssh/authorized_keys':
   ensure  => 'file',
@@ -22,12 +22,13 @@ file { '/home/git/.ssh/authorized_keys':
   mode    => '0600',
   owner   => 'git',
   source  => 'puppet:///modules/gitk/authorized_keys',
-}
+  }
 
-file { '/opt/git':
+file { "$repohome":
   ensure  => 'directory',
   group   => 'git',
   owner   => 'git',
-}
+  }
 
 }
+
